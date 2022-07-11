@@ -8,6 +8,7 @@
 
         <!-- Bootstrap core CSS -->
         <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('build/app.css') }}" rel="stylesheet">
 
         <style>
             .bd-placeholder-img {
@@ -42,10 +43,17 @@
                             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                         </li>
                     </ul>
-                    <form class="form-inline mt-2 mt-md-0">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Votre recherche" aria-label="Rechercher">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
-                    </form>
+                    {% if app.user %}
+                    <div id="navBarConnected">
+                        <a href="{{ path('app_profile') }}">Profil</a></p>
+                        <a href="{{  path('app_logout')  }}">Déconnexion</a>
+                    </div>
+                      {% else %}
+                      <div id="login">
+                        <a href="{{ path('app_register') }}">Inscription</a>
+                        <a href="{{ path('app_login') }}">Connexion</a>
+                      </div>
+                    {% endif %}
                 </div>
             </nav>
         </header>
