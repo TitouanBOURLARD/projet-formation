@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="Symfony starter kit pour Titouan et Pierre">
-        <title>{% block title %}Starter{% endblock %}</title>
+        <title>{% block title %}Accueil{% endblock %}</title>
 
         <!-- Bootstrap core CSS -->
         <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -33,20 +33,21 @@
     <body>
         <header>
             <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-                <a class="navbar-brand" href="#">Starter</a>
+                <a class="navbar-brand" id="home_navbar" href="{{ path('home') }}">Accueil</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" id="products_navbar" href="{{ path('app_products') }}">Nos produits <span class="sr-only">(current)</span></a>
                         </li>
                     </ul>
                     {% if app.user %}
                     <div id="navBarConnected">
-                        <a href="{{ path('app_profile') }}">Profil</a></p>
-                        <a href="{{  path('app_logout')  }}">Déconnexion</a>
+                        <a class="navBarConnected" href="{{ path('app_profile') }}">Profil</a>
+                        <a class="navBarConnected" href="{{ path('app_cart') }}">Panier</a>
+                        <a class="navBarConnected" href="{{  path('app_logout')  }}">Déconnexion</a>
                     </div>
                       {% else %}
                       <div id="login">
@@ -71,9 +72,9 @@
                             <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
                             <div class="container">
                                 <div class="carousel-caption text-left">
-                                    <h1>Example headline.</h1>
-                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+                                    <h1>La Bat'Chaussure</h1>
+                                    <p>La Bat'Chaussure est une chaussure pour les hommes confirmés dans le football, elle est réservée, aux champions.</p>
+                                    <p><a class="btn btn-lg btn-primary" href="{{ path('app_products') }}" role="button">Amenez-moi à la boutique</a></p>
                                 </div>
                             </div>
                         </div>
@@ -81,9 +82,9 @@
                             <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
                             <div class="container">
                                 <div class="carousel-caption">
-                                    <h1>Another example headline.</h1>
-                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                                    <h1>Chaussure orange sans lacets</h1>
+                                    <p>Cette chaussure est celle des fainéants, elle permet une meilleur accroche au terrain et un gain de temps dans les vestiaires.</p>
+                                    <p><a class="btn btn-lg btn-primary" href="{{ path('app_products') }}" role="button">Amenez-moi à la boutique</a></p>
                                 </div>
                             </div>
                         </div>
@@ -91,9 +92,9 @@
                             <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
                             <div class="container">
                                 <div class="carousel-caption text-right">
-                                    <h1>One more for good measure.</h1>
-                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+                                    <h1>Chaussure sans crampons</h1>
+                                    <p>Cette chaussure sans crampons permet aux enfants de jouer sans craintes de se blesser lors de tacle.</p>
+                                    <p><a class="btn btn-lg btn-primary" href="{{ path('app_products') }}" role="button">Amenez-moi à la boutique</a></p>
                                 </div>
                             </div>
                         </div>
@@ -123,8 +124,8 @@
 
             <!-- FOOTER -->
             <footer class="container">
-                <p class="float-right"><a href="#">Back to top</a></p>
-                <p>&copy; 2017-2020 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+                <p class="float-right"><a href="{{ path('home') }}">Retour en haut de page</a></p>
+                <p>&copy; 2022 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
             </footer>
         </main>
         

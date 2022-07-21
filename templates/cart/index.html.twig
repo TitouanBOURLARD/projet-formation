@@ -3,6 +3,43 @@
 {% block title %}Mon panier!{% endblock %}
 
 {% block content %}
+<section class="bg-light p-3">
     <h1>Mon panier</h1>
-    {{ dump(cart) }}
+</section>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Produit</th>
+                <th>Prix</th>
+                <th>Quantité</th>
+                <th>Total</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for element in cart %}
+            <tr>
+                <td><img src="/uploads/{{ element.product.illustration }}" alt="{{ element.product.name }}" class="img-fluid" /></td>
+                <td class ="textCart">{{ element.product.name }}</td>
+                <td class ="textCart" id="cart-price">{{ element.product.price /100 }}€</td>
+                <td class ="textCart">{{ element.quantity }}</td>
+                <td class ="textCart" id="final-price">{{ element.quantity * element.product.price /100 }}€</td>
+                <td class ="textCart">
+                    <a href="{{ path('app_add_to_cart', { id: element.product.id }) }}" class="btn btn-primary" id="add">+</a>
+                    <a href="{{ path('app_decrease_from_cart', { id: element.product.id }) }}" class="btn btn-primary" id="decrease">-</a>
+                    <a href="{{ path('app_remove_from_cart', {id: element.product.id }) }}" class="bi bi-trash" id="remove">Remove</a>
+                </td>
+            </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5" class="text-center">Votre panier est vide</td>
+                </tr>
+                
+            {% endfor %}
+        </tbody>
+        
+    </table>
+    <hr>
+    {# {{ dump(cart) }} #}
 {% endblock %}

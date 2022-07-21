@@ -1,5 +1,29 @@
-body {
-    background-color: lightgray;
+/*!**************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[1].use[1]!./assets/styles/app.css ***!
+  \**************************************************************************************************************/
+  body {
+    background-color: rgb(255, 255, 255);
+}
+
+/* NAV BAR */
+
+#home_navbar {
+    color: white;
+    font-size: large;
+    font-weight: bold;
+}
+
+#products_navbar {
+    color: white;
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* --------- */
+
+h3 {
+    color: rgb(0, 0, 0);
 }
 
 #login {
@@ -10,6 +34,13 @@ body {
 
 #login a {
     margin-right: 4em;
+    color: white;
+}
+
+#navBarConnected a.navBarConnected {
+    margin-left: 50px;
+    gap: 1em;
+    color: white;
 }
 
 #loginForm {
@@ -17,8 +48,108 @@ body {
     flex-direction: column;
 }
 
-#navBarConnected {
-    display: flex;
-    gap: 1em;
-    margin-right: 4em;
+#ficheProduits {
+    width: 100%;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
 }
+
+h1 {
+    color: black;
+    font-size: xx-large;
+}
+
+#add-to-cart {
+    color: white;
+    background-color: green;
+}
+
+h5 {
+    color: black;
+    font-size: large;
+}
+
+.product-subtitle {
+    color: green;
+    font-size: medium;
+    font-style: italic;
+}
+
+.product-price {
+    color: red;
+    font-size: large;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.row {
+    width: 120%;
+}
+
+#cart-price {
+    color: red;
+}
+
+#final-price {
+    color: green;
+}
+
+#remove {
+    color: red;
+}
+
+#add {
+    background-color: green;
+    color: white;
+}
+
+#decrease {
+    background-color: red;
+    color: white;
+}
+
+/* Photo heading homepage  */
+
+.headingPicture {
+    width: 200px;
+}
+
+/* CSS PANIER */
+
+.textCart {
+    vertical-align: middle !important;
+}
+
+.textCart a{
+    vertical-align: middle !important;
+}
+
+/* HOME PAGE */
+
+.nomChaussureHome {
+    color: black;
+    font-size: xx-large;
+    font-weight: bolder;
+}
+
+.sousTitreChaussureHome {
+    color: dimgray;
+}
+
+.textAdd {
+    font-style: italic;
+    font-weight: normal;
+    font-size: x-large;
+    color: dimgray;
+}
+
+/* CSS PAGE PRODUIT INDIVIDUEL */
+
+.showProductIllustration {
+    margin-left: 25%;
+    margin-right: 25%;
+    width: 50%;
+}
+
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYXBwLmNzcyIsIm1hcHBpbmdzIjoiOzs7QUFBQTtJQUNJLDJCQUEyQjtBQUMvQjs7QUFFQTtJQUNJLGFBQWE7SUFDYixRQUFRO0lBQ1IsOEJBQThCO0FBQ2xDOztBQUVBO0lBQ0ksaUJBQWlCO0FBQ3JCOztBQUVBO0lBQ0ksYUFBYTtJQUNiLHNCQUFzQjtBQUMxQixDIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vLy4vYXNzZXRzL3N0eWxlcy9hcHAuY3NzIl0sInNvdXJjZXNDb250ZW50IjpbImJvZHkge1xuICAgIGJhY2tncm91bmQtY29sb3I6IGxpZ2h0Z3JheTtcbn1cblxuI2xvZ2luIHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGdhcDogMWVtO1xuICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2Vlbjtcbn1cblxuI2xvZ2luIGEge1xuICAgIG1hcmdpbi1yaWdodDogNGVtO1xufVxuXG4jbG9naW5Gb3JtIHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG59Il0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9*/
