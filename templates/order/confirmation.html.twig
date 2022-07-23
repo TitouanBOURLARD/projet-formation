@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paiement réussi{% endblock %}
+
+{% block content %}
+    <h1>Confirmation de votre commande</h1>
+
+    <div class="row">
+        <div class="col-md-12">
+            <p>Bonjour {{ app.user.getFullName() }}, </p>
+            <p>Nous vous remercions pour votre commande <strong>N°{{ order.reference }}</strong>.<br />
+            <hr />
+            <p>
+                Votre commande sera livrée par <strong>{{ order.carrierName }}</strong> à l'adresse suivante : <br />
+                {{ order.delivery|raw }}
+            </p>
+        </div>
+    </div>
+{% endblock %}

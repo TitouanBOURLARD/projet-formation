@@ -12,6 +12,8 @@
 <div class="example-wrapper">
     <h1>Hello {{ app.user.getFullName() }}! ✅</h1>
 
+    <hr>
+
     {% for success in app.session.flashbag.get('success') %}
     <p class="success">{{ success }}</p>
         
@@ -21,19 +23,19 @@
 
     <hr>
 
-    <p>Nom : {{ app.user.getLastName }}</p>
-    <p>Prénom : {{ app.user.getFirstName }}</p>
-    <p>Email : {{ app.user.getEmail }}</p>
-    <p>Mot de passe : {{ app.user.getPassword }}</p>
-
+    <p><span class="textProfile">Nom : </span> {{ app.user.getLastName }}</p>
+    <p><span class="textProfile">Prénom : </span> {{ app.user.getFirstName }}</p>
+    <p><span class="textProfile">Email : </span> {{ app.user.getEmail }}</p>
+    <p><span class="textProfile">Mot de passe : </span> {{ app.user.getPassword }}</p>
 
     <hr>
 
+    <p><a href="{{ path('app_edit_profile') }}">Change tes informations</a></p>
+    <p><a href="">Change de mot de passe</a></p>
+    <p><a href="{{ path('app_account_addresses') }}">Gérer mes adresses de livraison</a></p>
+    <p><a href="{{ path('app_order') }}">Gère tes commandes</a></p>
 
-    <p>Change tes informations <a href="{{ path('app_edit_profile') }}">ici</a></p>
-    <p>Change de mot de passe <a href="">ici</a></p>
-    <p>Gère tes commandes <a href="{{ path('app_order') }}">ici</a></p>
-    <p><a href="{{ path('app_logout') }}">Déconnexion</a></p>
+    <p><a id="logoutProfile" href="{{ path('app_logout') }}">Déconnexion</a></p>
 
 </div>
 {% endblock %}

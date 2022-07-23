@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block javascript %}
+    <script src="https://js.stripe.com/v3"></script>
+{% endblock %}
+
+{% block title %}Récapitulatif de ma commande{% endblock %}
+
+{% block content %}
+    <h1>Récapitulatif de ma commande</h1>
+    <p>Vérifiez vos informations afin de finaliser votre commande.</p>
+
+    <div class="row">
+        <div class="col-md-6">
+            <strong>Mon adresse de livraison</strong>
+            <div class="form-check mt-4">{{ delivery|raw }}</div>
+            <hr />
+            <strong>Mon mode de livraison</strong>
+            <div class="form-check mt-4">
+                <strong>{{ carrier.name }}</strong><br />
+                {{ carrier.description }}<br />
+                <strong>{{ (carrier.price / 100)|number_format(2, ',', '.') }} €</strong>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="text-center">
+                <strong>Ma commande</strong>
+            </div>
+
+            <div class="order-summary">
+                {% set total = null %}
+                {% for key,item in cart %}
+                    <div class="row {% if key > 0 %}mt-2{% endif %}">
+                        <div class="col-2">
+                            <img 
+                                src="/uploads/{{ item.product.illustration }}" 
+                                alt="{{ item.product.name }}"
+                                width="100%"
+                            />
+                        </div>
+                        <div class="col-8">
+                            {{ item.product.name }}
+                            <small>{{ item.product.subtitle }}</small>
+                        </div>
+                        <div class="col-2">
+                            x {{ item.quantity }}
+                        </div>
+                    </div>
+                    {% set total = total + (item.product.price * item.quantity) %}
+                {% endfor %}
+            </div>
+
+            <hr />
+            <strong>Sous-Total TTC:</strong> {{ (total / 100)|number_format(2, ',', '.') }} €
+            <strong>Livraison:</strong> {{ (carrier.price / 100)|number_format(2, ',', '.') }} €
+            <strong>Total TTC:</strong> {{ ((total + carrier.price) / 100)|number_format(2, ',', '.') }} €
+
+            <a href="javascript:void(0)" class="btn btn-primary btn-block mt-5" id="checkout-button">
+                Payer {{ ((total + carrier.price) / 100)|number_format(2, ',', '.') }} €
+            </a>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script type="text/javascript">
+        const stripe = Stripe("pk_test_51LOOBmI9qPjCwftSHI3JCtCGcD79ZA8p6FNNnMZ6J4fwNwTxdBoWTA8u06SWJg0hKu06O9T8RNn8DY9TT3MhhBr800pesQHmKX");
+        const checkoutButton = document.getElementById('checkout-button');
+
+        checkoutButton.addEventListener('click', function() {
+            fetch("http://localhost:8000/commande/create-session/{{ reference }}", {
+                method: 'POST'
+            }).then(function (response) {
+                return response.json()
+            }).then(function (session) {
+                if (session.error) {
+                    window.location.replace('{{ path('app_order') }}')
+                } else {
+                    return stripe.redirectToCheckout({ sessionId: session.id })
+                }
+            }).catch(function (error) {
+                console.error('Error: ', error);
+            })
+        });
+    </script>
+{% endblock %}

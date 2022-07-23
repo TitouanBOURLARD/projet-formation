@@ -3,43 +3,68 @@
 {% block title %}Mon panier!{% endblock %}
 
 {% block content %}
-<section class="bg-light p-3">
     <h1>Mon panier</h1>
-</section>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Image</th>
-                <th>Produit</th>
-                <th>Prix</th>
-                <th>Quantité</th>
-                <th>Total</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for element in cart %}
-            <tr>
-                <td><img src="/uploads/{{ element.product.illustration }}" alt="{{ element.product.name }}" class="img-fluid" /></td>
-                <td class ="textCart">{{ element.product.name }}</td>
-                <td class ="textCart" id="cart-price">{{ element.product.price /100 }}€</td>
-                <td class ="textCart">{{ element.quantity }}</td>
-                <td class ="textCart" id="final-price">{{ element.quantity * element.product.price /100 }}€</td>
-                <td class ="textCart">
-                    <a href="{{ path('app_add_to_cart', { id: element.product.id }) }}" class="btn btn-primary" id="add">+</a>
-                    <a href="{{ path('app_decrease_from_cart', { id: element.product.id }) }}" class="btn btn-primary" id="decrease">-</a>
-                    <a href="{{ path('app_remove_from_cart', {id: element.product.id }) }}" class="bi bi-trash" id="remove">Remove</a>
-                </td>
-            </tr>
-            {% else %}
+    <p>Retrouvez l'ensemble des produits de votre panier</p>
+
+    {% if cart|length > 0 %}
+
+        <table class="table mt-3">
+            <thead>
                 <tr>
-                    <td colspan="5" class="text-center">Votre panier est vide</td>
+                    <th>Produit</th>
+                    <th></th>
+                    <th>Quantité</th>
+                    <th>Prix unitaire en €</th>
+                    <th>Total en €</th>
+                    <th></th>
                 </tr>
-                
-            {% endfor %}
-        </tbody>
-        
-    </table>
-    <hr>
-    {# {{ dump(cart) }} #}
+            </thead>
+            <tbody>
+                {% set total = null %}
+                {% for item in cart %}
+                    <tr>
+                        <td>
+                            <img src="/uploads/{{ item.product.illustration }}" alt="{{ item.product.name }}" class="img-fluid" />
+                        </td>
+                        <td class ="textCart">
+                            {{ item.product.name }} <br />
+                            {{ item.product.subtitle }}
+                        </td>
+                        <td class ="textCart">
+                            <a href="{{ path('app_add_to_cart', { id: item.product.id }) }}" class="btn btn-primary" id="add">+</a>
+                            x {{ item.quantity }}
+                            <a href="{{ path('app_decrease_from_cart', { id: item.product.id }) }}" class="btn btn-primary" id="decrease">-</a>
+                        </td>
+                        <td class ="textCart" id="cart-price">
+                            {{ (item.product.price / 100)|number_format(2, ',', '.') }} €
+                        </td>
+                        <td class ="textCart" id="final-price">
+                            {{ ((item.quantity * item.product.price) / 100)|number_format(2, ',', '.') }} €
+                        </td>
+                        <td>
+                            <a href="{{ path('app_remove_from_cart', {id: item.product.id }) }}" class="bi bi-trash" id="remove">
+                                <svg style="height:25px" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                </svg>
+                            </a>
+                        </td>
+                    </tr>
+                    {% set total = total + (item.product.price * item.quantity) %}
+                {% endfor %}
+            </tbody>
+            
+        </table>
+
+        <div class="text-right mb-5">
+            <strong>Nombre de produits : {{ cart|length }}</strong><br />
+            <strong>Total : {{ (total / 100)|number_format(2, ',', '.') }} €</strong><br />
+            <a href="{{ path('app_order') }}" class="btn btn-primary mt-3">Valider votre panier</a>
+        </div>
+
+    {% else %}
+
+        <hr />
+        <p><strong>Votre panier est vide</strong></p>
+
+    {% endif %}
 {% endblock %}
