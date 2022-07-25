@@ -4,12 +4,12 @@
 
 {% block content %}
     <h1>Mes commandes</h1>
-    <a href="{{ path('app_account') }}">Retourner à mon compte</a>
+    <a href="{{ path('app_profile') }}">Retourner à mon compte</a>
     
     {% if orders|length == 0 %}
         <p>Vous n'avez aucune commande enregistrée.</p>
     {% else %}
-        {{ dump(orders) }}
+        {# {{ dump(orders) }} #}
         <table class="table mt-4">
             <thead>
                 <tr>
