@@ -33,8 +33,8 @@ class OrderController extends AbstractController
             return $this->redirectToRoute('app_products');
         }
 
-        if (empty($this->getUser()->getAddresses()->getValues())) {
-            return $this->redirectToRoute('app_account_add_address');
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('app_login');
         }
 
         $form = $this->createForm(OrderType::class, null, [

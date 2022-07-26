@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nos produits!{% endblock %}
+{% block title %}Nos produits{% endblock %}
 
 {% block content %}
 
@@ -9,7 +9,7 @@
             <h3>Filtrer</h3>
         </div>-->
         <div class="col-md-9">
-            <h3>Nos produits :</h3>
+            <h3>Nos produits actuellement listés :</h3>
 
             <div class="row" >
                 {% for product in products %}
@@ -34,6 +34,6 @@
             </div>
         </div>
     </div>
-    <hr>
+    
 
 {% endblock %}

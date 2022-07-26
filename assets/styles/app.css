@@ -126,6 +126,23 @@ h5 {
 
 /* HOME PAGE */
 
+.homeTitle {
+    margin-top: 20px;
+    color: black;
+    font-size: 5em;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.homeSubtitle {
+    color: dimgray;
+    font-style: italic;
+    text-align: center;
+    font-size: large;
+    margin-bottom: 30px;
+}
+
 .nomChaussureHome {
     color: black;
     font-size: xx-large;
@@ -171,5 +188,21 @@ h5 {
     color: red;
 }
 
+
+/* FOOTER */
+
+#footer {
+    position: relative !important;
+    width: 70%;
+    margin-left: 20%;
+    margin-right: 10%;
+    bottom: 0;
+    
+}
+
+.listFooter {
+    text-align: center;
+    list-style-type: none;
+}
 
 /*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYXBwLmNzcyIsIm1hcHBpbmdzIjoiOzs7QUFBQTtJQUNJLDJCQUEyQjtBQUMvQjs7QUFFQTtJQUNJLGFBQWE7SUFDYixRQUFRO0lBQ1IsOEJBQThCO0FBQ2xDOztBQUVBO0lBQ0ksaUJBQWlCO0FBQ3JCOztBQUVBO0lBQ0ksYUFBYTtJQUNiLHNCQUFzQjtBQUMxQixDIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vLy4vYXNzZXRzL3N0eWxlcy9hcHAuY3NzIl0sInNvdXJjZXNDb250ZW50IjpbImJvZHkge1xuICAgIGJhY2tncm91bmQtY29sb3I6IGxpZ2h0Z3JheTtcbn1cblxuI2xvZ2luIHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGdhcDogMWVtO1xuICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2Vlbjtcbn1cblxuI2xvZ2luIGEge1xuICAgIG1hcmdpbi1yaWdodDogNGVtO1xufVxuXG4jbG9naW5Gb3JtIHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG59Il0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9*/

@@ -77,7 +77,27 @@
             </div><!-- /.container -->
 
             <!-- FOOTER -->
-            <footer class="container">
+            <footer class="container" id="footer">
+            <hr />
+            {% if app.user %}
+                    <ul class="listFooter">
+                        <li><a href="{{ path('home') }}">Accueil</a></li> 
+                        <li><a href="{{ path('app_products') }}">Nos produits</a></li>
+                        <li><a href="{{ path('app_profile')  }}">Mon profil</a></li>
+                        <li><a href="{{ path('app_cart')  }}">Mon panier</a></li>
+                    </ul>
+                      {% else %}
+                        <ul class="listFooter">
+                            <a href="{{ path('home') }}">Accueil</a>
+                            <a href="{{ path('app_products') }}">Nos produits</a>
+                        </ul>
+                    {% endif %}
+            {# <ul id="listFooter">
+                <li><a href="{{ path('home') }}">Accueil</a></li>
+                <li><a href="{{ path('app_products') }}">Nos Produits</a></li>
+                <li><a href="{{ path('app_profile') }}">Mon profil</a></li>
+                <li><a href="{{ path('app_cart') }}">Mon panier</a></li>
+            </ul> #}
                 <p class="float-right"><a href="{{ path('home') }}">Retour en haut de page</a></p>
                 <p>&copy; 2022 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
             </footer>
